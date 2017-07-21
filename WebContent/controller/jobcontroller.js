@@ -1,17 +1,16 @@
 /**
  * job controller
  */
-app.controller('JobController',function($scope,$location,JobService){
-	$scope.showdetails=false;
+app.controller('JobController',function($scope,$location,JobService)
+		{
 	
-	function getAllJobs(){
-		$scope.jobs=JobService.getAllJobs().then(function(response){
+	$scope.jobs=JobService.getAllJobs().then(function(response){
 		$scope.jobs=response.data;
-		},function(response){
-			$scope.message=response.data.message
-			$location.path('/login')
-		})
-	}
+	},function(response){
+		$scope.message=response.data.message
+		$location.path('/login')
+	})
+	
 	
 	$scope.saveJob=function(){
 		JobService.saveJob($scope.job).then(function(response){
@@ -24,14 +23,4 @@ app.controller('JobController',function($scope,$location,JobService){
 			$location.path('/savejob')
 		})
 	}
-	
-	$scope.getJobDetail=function(id){
-		$scope.showdetails=true;
-		JobService.getJobById(id).then(function(response){
-			$scope.job=response.data;
-		},function(response){
-			console.log(response.status);
-		})
-		}
-getAllJobs();
 })

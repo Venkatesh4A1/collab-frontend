@@ -1,9 +1,11 @@
-/**
-* angular js module
-*/
+/*
+ * 
+ */
+var app = angular.module('myApp',['ngRoute','ngCookies']);
 
-var app=angular.module("myApp",['ngRoute','ngCookies'])
+
 app.config(function($routeProvider,$locationProvider){
+	
 	$routeProvider
 	.when('/registration',{
 		templateUrl:'views/registrationform.html',
@@ -20,6 +22,45 @@ app.config(function($routeProvider,$locationProvider){
 	.when('/getalljobs',{
 		templateUrl:'views/jobtitles.html',
 		controller:'JobController'
+	})
+	.when('/saveblogpost',{
+		templateUrl:'views/blogpostform.html',
+		controller:'BlogPostController'
+	})
+	.when('/getallblogs',{
+		templateUrl:'views/blogslist.html',
+		controller:'BlogPostController'
+	})
+	.when('/getBlogForApproval/:id',{
+		templateUrl:'views/approvalform.html',
+		controller:'BlogDetailController'
+	})
+	.when('/getBlogDetail/:id',{
+		templateUrl:'views/blogdetail.html',
+		controller:'BlogDetailController'
+	})
+	 .when('/suggestedusers',{
+        templateUrl:'views/suggestedusers.html',
+        controller:'FriendController'
+    })
+    .when('/pendingrequests',{
+        templateUrl:'views/pendingrequests.html',
+        controller:'FriendController'
+    })
+    .when('/listoffriends',{
+		templateUrl:'views/listoffriends.html',
+		controller:'FriendController'
+	})
+	.when('/profilepic',{
+		templateUrl:'views/profilepic.html'
+	})
+	.when('/edituserprofile',{
+		templateUrl:'views/updateprofile.html',
+		controller:'UserController'
+	})
+	.when('/chat',{
+		templateUrl:'views/chat.html',
+		controller:'ChatCtrl'
 	})
 	.otherwise({
 		templateUrl:'views/home.html'
